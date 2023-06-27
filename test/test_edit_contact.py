@@ -1,3 +1,4 @@
+#задание 7
 from model.contact import Contact
 def test_first_contact_change(app):
     app.session.login(login="admin", password="secret")

@@ -1,3 +1,4 @@
+#задание 7
 class Contact:
     def __init__(self, first_name=None, last_name=None, address=None, mobile_phone=None, email=None, day_of_birth=None, month_of_birth=None,
                         year_of_birth=None):

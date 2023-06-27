@@ -1,3 +1,5 @@
+
+#задание 7
 from model.group import Group
 
 

@@ -1,3 +1,4 @@
+#задание 7
 from selenium import webdriver
 from fixture.session import SessionHelper
 from fixture.contact import ContactHelper

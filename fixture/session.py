@@ -10,8 +10,8 @@ class SessionHelper:
         wd.find_element_by_id("LoginForm").click()
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys(password)
-        wd.find_element_by_id("LoginForm").submit()
-       # wd.find_element_by_xpath("//input[@value='Login']").click()
+       #wd.find_element_by_id("LoginForm").submit()
+        wd.find_element_by_xpath("//input[@value='Login']").click()
 
 
     def logout(self):

@@ -1,3 +1,4 @@
+#задание 7
 import pytest
 from fixture.application import Application
 

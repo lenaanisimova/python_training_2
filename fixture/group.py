@@ -3,34 +3,42 @@ class GroupHelper:
     def __init__(self, app):
         self.app = app
 
+
     def create(self, group):
         wd = self.app.wd
-        self.app.navigation.open_groups_page()
+        wd.find_element_by_link_text("groups").click()
+        #self.app.navigation.open_groups_page()
+
         # init_group_creation
-        wd.find_element_by_name("New group").click()
+        wd.find_element_by_name("new").click()
         self.fill_group_form(group)
         # submit_group_creation
         wd.find_element_by_name("submit").click()
-        self.app.navigation.return_to_groups_page()
+        #self.app.navigation.return_to_groups_page()
+        wd.find_element_by_link_text("group page").click()
 
     def delete_first_group(self):
         wd = self.app.wd
-        self.app.navigation.open_groups_page()
+        wd.find_element_by_link_text("groups").click()
+        #self.app.navigation.open_groups_page()
         self.select_first_group()
         # submit deletion
         wd.find_element_by_name("delete").click()
         # self.return_to_groups_page()
-        self.app.navigation.return_to_groups_page()
+        #self.app.navigation.return_to_groups_page()
+        wd.find_element_by_link_text("group page").click()
 
     def first_group_change(self, new_group_data):
         wd = self.app.wd
-        self.app.navigation.open_groups_page()
+        #self.app.navigation.open_groups_page()
+        wd.find_element_by_link_text("groups").click()
         self.select_first_group()
         wd.find_element_by_name("edit").click()
         self.fill_group_form(new_group_data)
         # submit_group_creation
         wd.find_element_by_name("update").click()
-        self.app.navigation.return_to_groups_page()
+        #self.app.navigation.return_to_groups_page()
+        wd.find_element_by_link_text("group page").click()
 
     def select_first_group(self):
         wd = self.app.wd

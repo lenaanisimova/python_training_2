@@ -1,5 +1,7 @@
-#задание 7
+#задание 13
 from selenium.webdriver.support.ui import Select
+from model.contact import Contact
+
 class ContactHelper:
     def __init__(self, app):
         self.app = app
@@ -11,24 +13,44 @@ class ContactHelper:
         self.user_information(contact, wd)
         self.submit_contact_creation()
         self.app.navigation.return_to_home_page()
+        self.contact_cache = None
+
     def delete_first_contact(self):
+        self.delete_contact_by_index(0)
+
+    def delete_contact_by_index(self, index):
         wd = self.app.wd
         # open contacts page
         wd.find_element_by_xpath("//img[@alt='Addressbook']").click()
-        # select first contact
-        wd.find_element_by_name("selected[]").click()
+         # select first contact
+        self.select_contact_by_index(index)
         # submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
+        self.contact_cache = None
+
+    def select_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_name("selected[]").click()
+
+    def select_contact_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
+
     def first_contact_change(self, contact):
+        self.contact_change_by_index(0)
+
+    def contact_change_by_index(self, index, contact):
         wd = self.app.wd
         # open contact page
         wd.find_element_by_xpath("//img[@alt='Addressbook']").click()
         # contact change
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
         self.user_information(contact, wd)
         # save changes
         wd.find_element_by_name("update").click()
+        self.contact_cache = None
+
     def user_information(self, contact, wd):
         # first name
         wd.find_element_by_name("firstname").click()
@@ -63,6 +85,7 @@ class ContactHelper:
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys(contact.year_of_birth)
+
     def submit_contact_creation(self):
         wd = self.app.wd
         wd.find_element_by_name("submit").click()
@@ -70,3 +93,17 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_xpath("//img[@alt='Addressbook']").click()
         return len(wd.find_elements_by_name("selected[]"))
+
+    contact_cache = None
+
+    def get_contact_list(self):
+        if self.contact_cache is None:
+            wd = self.app.wd
+            wd.find_element_by_xpath("//img[@alt='Addressbook']").click()
+            self.contact_cache = []
+            for element in wd.find_elements_by_name("entry"):
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                first_name = element.find_element_by_xpath("td[3]").text
+                last_name = element.find_element_by_xpath("td[2]").text
+                self.contact_cache.append(Contact(first_name=first_name, last_name=last_name, id=id))
+        return self.contact_cache

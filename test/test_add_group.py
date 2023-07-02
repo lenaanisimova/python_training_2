@@ -1,12 +1,11 @@
-#задание 7
+#задание 13
 from model.group import Group
 
 def test_add_group(app):
-    app.session.login(login="admin", password="secret")
-    app.group.create(Group(name="grouplena", header="grouplena1", footer="grouplena2"))
-
-def test_add_empty_group(app):
-    app.session.login(login="admin", password="secret")
-    app.group.create(Group(name="", header="", footer=""))
-
-  #  app.session.logout()
+    old_groups = app.group.get_group_list()
+    group = Group(name="grouptest", header="headertest", footer="footertest")
+    app.group.create(group)
+    assert len(old_groups) + 1 == app.group.count()
+    new_groups = app.group.get_group_list()
+    old_groups.append(group)
+    assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)

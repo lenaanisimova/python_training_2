@@ -85,12 +85,6 @@ class ContactHelper:
         wd.find_element_by_name("email").click()
         wd.find_element_by_name("email").clear()
         wd.find_element_by_name("email").send_keys(contact.email)
-        wd.find_element_by_name("email2").click()
-        wd.find_element_by_name("email2").clear()
-        wd.find_element_by_name("email2").send_keys(contact.email_2)
-        wd.find_element_by_name("email3").click()
-        wd.find_element_by_name("email3").clear()
-        wd.find_element_by_name("email3").send_keys(contact.email_3)
         # birthday
         # day
         wd.find_element_by_name("bday").click()
@@ -159,11 +153,11 @@ class ContactHelper:
         work_phone = wd.find_element_by_name("work").get_attribute("value")
         secondary_phone = wd.find_element_by_name("phone2").get_attribute("value")
         email = wd.find_element_by_name("email").get_attribute("value")
-        email_2 = wd.find_element_by_name("email2").get_attribute("value")
-        email_3 = wd.find_element_by_name("email3").get_attribute("value")
+        #email_2 = wd.find_element_by_name("email2").get_attribute("value")
+        #email_3 = wd.find_element_by_name("email3").get_attribute("value")
         return Contact(id=id, first_name=first_name, last_name=last_name, address=address, home_phone=home_phone,
                        mobile_phone=mobile_phone, work_phone=work_phone, secondary_phone=secondary_phone,
-                       email=email, email_2=email_2, email_3=email_3)
+                       email=email)
 
     def get_contact_from_view_page(self, index):
         wd = self.app.wd

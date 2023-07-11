@@ -1,9 +1,16 @@
 #задание 13
+import pytest
 from model.group import Group
+from data.add_group import testdata
 
-def test_add_group(app):
+constant = [
+    Group(name="name", header="header", footer="footer"),
+    Group(name="name_2", header="header_2", footer="footer_2")
+]
+
+@pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
+def test_add_group(app, group):
     old_groups = app.group.get_group_list()
-    group = Group(name="grouptest", header="headertest", footer="footertest")
     app.group.create(group)
     assert len(old_groups) + 1 == app.group.count()
     new_groups = app.group.get_group_list()

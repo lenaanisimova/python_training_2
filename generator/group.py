@@ -1,3 +1,4 @@
+#задание 19
 from model.group import Group
 import random
 import string

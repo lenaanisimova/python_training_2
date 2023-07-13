@@ -1,3 +1,4 @@
+#задание 19
 from model.contact import Contact
 import random
 import string

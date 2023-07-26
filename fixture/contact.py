@@ -52,6 +52,17 @@ class ContactHelper:
         wd.find_element_by_name("update").click()
         self.contact_cache = None
 
+    def contact_change_by_id(self, id, contact):
+        wd = self.app.wd
+        # open contact page
+        wd.find_element_by_xpath("//img[@alt='Addressbook']").click()
+        xpath = f'//a[@href="edit.php?id={id}"]'
+        wd.find_element_by_xpath(xpath).click()
+        self.user_information(contact, wd)
+        # save changes
+        wd.find_element_by_name("update").click()
+        self.contact_cache = None
+
     def user_information(self, contact, wd):
         # first name
         wd.find_element_by_name("firstname").click()

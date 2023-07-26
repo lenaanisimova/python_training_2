@@ -1,4 +1,4 @@
-
+#задание 20
 from model.contact import Contact
 from random import randrange
 
@@ -16,7 +16,7 @@ def test_first_contact_change(app, db, check_ui):
                     home_phone="79110975569", secondary_phone="79110975560",
                     email="elena12@mail.ru", day_of_birth="12", month_of_birth="November",
                             year_of_birth="1983")
-    contact.id = int(old_contacts[index].id)
+    contact.id = str(old_contacts[index].id)
     app.contact.contact_change_by_id(contact.id, contact)
     new_contacts = db.get_contact_list()
     assert len(old_contacts) == app.contact.count()

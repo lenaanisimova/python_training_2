@@ -1,4 +1,4 @@
-#задание 7
+#задание 20
 from sys import maxsize
 
 class Group:

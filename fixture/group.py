@@ -1,4 +1,4 @@
-#задание 13
+#задание 20
 from model.group import Group
 
 class GroupHelper:

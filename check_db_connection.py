@@ -1,3 +1,5 @@
+#задание 20
+
 #import mysql.connector
 import pymysql.cursors
 from fixture.orm import ORMFixture

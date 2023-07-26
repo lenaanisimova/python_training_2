@@ -1,4 +1,4 @@
-
+#задание 20
 from model.contact import Contact
 
 def test_add_contact(app, db, json_contacts, check_ui):

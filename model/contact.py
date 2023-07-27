@@ -23,8 +23,10 @@ class Contact:
         self.month_of_birth = month_of_birth
         self.year_of_birth = year_of_birth
 
+    @property
     def __repr__(self):
-        return "%s:%s:%s" % (self.id, self.first_name, self.last_name)
+        return "%s:%s:%s:%s:%s:%s" % (self.id, self.first_name, self.last_name, self.address, self.all_emails_from_home_page,
+                             self.all_phones_from_home_page)
     def __eq__(self, other):
         return (self.id is None or other.id is None or self.id == other.id) and self.first_name == other.first_name and self.last_name == other.last_name
     def id_or_max(self):

@@ -218,4 +218,35 @@ class ContactHelper:
             merged_contacts_phone_list.append(self.merge_phones(item))
         return merged_contacts_phone_list
 
+    def add_contact_to_group(self, contact, group):
+        self.app.navigation.return_to_home_page()
+        self.select_contact_by_id(contact.id)
+        self.select_group_to_add(group.id)
+        self.submit_contact_to_group()
 
+    def select_group_to_add(self, group_id):
+        wd = self.app.wd
+        wd.find_element_by_name("to_group").click()
+        # Select(wd.find_element_by_name("to_group")).select_by_visible_text(group_name)
+        xpath = f"//select[@name='to_group']/option[@value='{group_id}']"
+        wd.find_element_by_xpath(xpath).click()
+
+    def submit_contact_to_group(self):
+        wd = self.app.wd
+        wd.find_element_by_name("add").click()
+
+    def delete_contact_from_group(self, contact_with_group):
+        self.app.navigation.return_to_home_page()
+        self.select_group_with_contact(contact_with_group.group_id)
+        self.select_contact_by_id(contact_with_group.id)
+        self.submit_delete_contact_to_group()
+
+    def select_group_with_contact(self, group_id):
+        wd = self.app.wd
+        wd.find_element_by_name("group").click()
+        xpath = f"//select[@name='group']/option[@value='{group_id}']"
+        wd.find_element_by_xpath(xpath).click()
+
+    def submit_delete_contact_to_group(self):
+        wd = self.app.wd
+        wd.find_element_by_name("remove").click()

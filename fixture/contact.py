@@ -231,6 +231,7 @@ class ContactHelper:
         xpath = f"//select[@name='to_group']/option[@value='{group_id}']"
         wd.find_element_by_xpath(xpath).click()
 
+
     def submit_contact_to_group(self):
         wd = self.app.wd
         wd.find_element_by_name("add").click()

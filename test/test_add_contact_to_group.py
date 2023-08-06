@@ -1,6 +1,7 @@
 from model.contact import Contact
 from model.group import Group
 import random
+
 def test_add_contact_to_group(app, db, orm):
     # проверяем наличие хотя бы одного контакта. Если его нет - создаем
     if len(db.get_contact_list()) == 0:

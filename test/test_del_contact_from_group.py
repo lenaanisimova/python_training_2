@@ -1,6 +1,10 @@
+#задание 22
+
 from model.contact import Contact
 from model.group import Group
 import random
+
+
 def test_delete_contact_from_group(app, db, orm):
     # Проверяем есть ли хотя бы одна группа
     if len(db.get_group_list()) == 0:

@@ -1,4 +1,4 @@
-
+#задание 22 исправлена ошибка
 from pony.orm import *
 from datetime import datetime
 from model.group import Group
@@ -10,7 +10,7 @@ class ORMFixture:
     db = Database()
 
     def __init__(self,  host, name, user, password):
-        self.db.bind('mysql', host=host, database=name, user=user, password=password, conv=decoders)
+        self.db.bind('mysql', host=host, database=name, user=user, password=password)
         # conv=decoders в лекции передается, у меня с ним ошибка
         self.db.generate_mapping()
         sql_debug(True)

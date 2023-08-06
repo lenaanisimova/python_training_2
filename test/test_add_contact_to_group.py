@@ -1,3 +1,4 @@
+#задание 22 исправлена ошибка
 from model.contact import Contact
 from model.group import Group
 import random

@@ -1,4 +1,4 @@
-#задание 20
+#задание 28
 class SessionHelper:
     def __init__(self, app):
         self.app = app

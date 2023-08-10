@@ -1,4 +1,4 @@
-#задание 19
+#задание 28
 from model.contact import Contact
 import random
 import string

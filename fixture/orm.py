@@ -1,4 +1,4 @@
-#задание 22 исправлена ошибка
+#задание 28
 from pony.orm import *
 from datetime import datetime
 from model.group import Group

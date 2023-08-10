@@ -1,3 +1,4 @@
+#Задание 28
 from sys import maxsize
 class ContactInGroup:
     def __init__(self, id=None, group_id=None):

@@ -1,4 +1,4 @@
-#задание 22 исправлена ошибка
+#задание 28
 from selenium.webdriver.support.ui import Select
 from model.contact import Contact
 import re

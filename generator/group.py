@@ -1,4 +1,4 @@
-#задание 19
+#задание 28
 from model.group import Group
 import random
 import string
